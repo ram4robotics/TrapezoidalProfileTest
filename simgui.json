@@ -2,6 +2,8 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/LiveWindow/ArmTrapezoidTests": "Subsystem",
+      "/LiveWindow/ElevatorShuffleBoardDisplay": "Subsystem",
       "/LiveWindow/ExampleSubsystem": "Subsystem",
       "/LiveWindow/ShuffleBoardDisplay": "Subsystem",
       "/LiveWindow/TrapezoidTests": "Subsystem",

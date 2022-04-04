@@ -10,8 +10,9 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.ShuffleBoardDisplay;
+import frc.robot.subsystems.ArmShuffleBoardDisplay;
 import frc.robot.subsystems.ArmTrapezoidTests;
+import frc.robot.subsystems.ElevatorShuffleBoardDisplay;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
@@ -24,7 +25,8 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private ShuffleBoardDisplay m_testDriver = new ShuffleBoardDisplay();
+  // private ArmShuffleBoardDisplay m_testDriver = new ArmShuffleBoardDisplay();
+  private ElevatorShuffleBoardDisplay m_testDriver = new ElevatorShuffleBoardDisplay();
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 

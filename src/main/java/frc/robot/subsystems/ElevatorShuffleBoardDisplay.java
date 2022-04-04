@@ -9,12 +9,12 @@ import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShuffleBoardDisplay extends SubsystemBase {
+public class ElevatorShuffleBoardDisplay extends SubsystemBase {
   public ArmTrapezoidTests m_trapTests;
   boolean m_trapTestsCreated = false;
   private double m_maxVel, m_maxAcc, m_startPos, m_endPos;
   /** Creates a new ShuffleBoardDisplay. */
-  public ShuffleBoardDisplay() {
+  public ElevatorShuffleBoardDisplay() {
     m_maxVel = 1.0;
     m_maxAcc = 1.0;
     m_startPos = 0;
@@ -30,9 +30,9 @@ public class ShuffleBoardDisplay extends SubsystemBase {
     m_maxAcc = SmartDashboard.getNumber("Max Acceleration", m_maxAcc);
     m_startPos = SmartDashboard.getNumber("Starting Position", m_startPos);
     m_endPos = SmartDashboard.getNumber("End Position", m_endPos);
-    m_trapTests = new ArmTrapezoidTests(m_maxVel, m_maxAcc, Units.degreesToRadians(m_startPos));
+    m_trapTests = new ArmTrapezoidTests(m_maxVel, m_maxAcc, Units.inchesToMeters(m_startPos));
     m_trapTestsCreated = true;
-    m_trapTests.setGoal(new TrapezoidProfile.State(Units.degreesToRadians(m_endPos), 0));
+    m_trapTests.setGoal(new TrapezoidProfile.State(Units.inchesToMeters(m_endPos), 0));
   }
 
   @Override
