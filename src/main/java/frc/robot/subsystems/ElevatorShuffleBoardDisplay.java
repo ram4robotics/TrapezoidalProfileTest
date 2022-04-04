@@ -10,27 +10,27 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ElevatorShuffleBoardDisplay extends SubsystemBase {
-  public ArmTrapezoidTests m_trapTests;
+  public ElevatorTrapezoidTest m_trapTests;
   boolean m_trapTestsCreated = false;
   private double m_maxVel, m_maxAcc, m_startPos, m_endPos;
   /** Creates a new ShuffleBoardDisplay. */
   public ElevatorShuffleBoardDisplay() {
-    m_maxVel = 1.0;
-    m_maxAcc = 1.0;
-    m_startPos = 0;
-    m_endPos = 130;
+    m_maxVel = 0.152; // meters / sec
+    m_maxAcc = 1.2; // meters / sec^2
+    m_startPos = 0; // inches
+    m_endPos = 20; // inches
     SmartDashboard.putNumber("Max Velocity", m_maxVel);
     SmartDashboard.putNumber("Max Acceleration", m_maxAcc);
-    SmartDashboard.putNumber("Starting Position", m_startPos);
-    SmartDashboard.putNumber("End Position", m_endPos);
+    SmartDashboard.putNumber("Starting Height", m_startPos);
+    SmartDashboard.putNumber("End Height", m_endPos);
   }
 
   public void createNewTrapezoidProfile() {
     m_maxVel = SmartDashboard.getNumber("Max Velocity", m_maxVel);
     m_maxAcc = SmartDashboard.getNumber("Max Acceleration", m_maxAcc);
-    m_startPos = SmartDashboard.getNumber("Starting Position", m_startPos);
-    m_endPos = SmartDashboard.getNumber("End Position", m_endPos);
-    m_trapTests = new ArmTrapezoidTests(m_maxVel, m_maxAcc, Units.inchesToMeters(m_startPos));
+    m_startPos = SmartDashboard.getNumber("Starting Height", m_startPos);
+    m_endPos = SmartDashboard.getNumber("End Height", m_endPos);
+    m_trapTests = new ElevatorTrapezoidTest(m_maxVel, m_maxAcc, Units.inchesToMeters(m_startPos));
     m_trapTestsCreated = true;
     m_trapTests.setGoal(new TrapezoidProfile.State(Units.inchesToMeters(m_endPos), 0));
   }
@@ -40,8 +40,12 @@ public class ElevatorShuffleBoardDisplay extends SubsystemBase {
     // This method will be called once per scheduler run
     if (!m_trapTestsCreated)
       return;
-    SmartDashboard.putNumber("Current Position", m_trapTests.getCurPosVel().position);
+    SmartDashboard.putNumber("Current Height", m_trapTests.getCurPosVel().position);
     SmartDashboard.putNumber("Current Velocity", m_trapTests.getCurPosVel().velocity);
     SmartDashboard.putNumber("Current Feed Forward", m_trapTests.getCurFFvalue());
+    SmartDashboard.putNumber("Max Achievable Velovity", m_trapTests.getFFObj().maxAchievableVelocity(12, m_maxAcc));
+    SmartDashboard.putNumber("Min Achievable  Velocity", m_trapTests.getFFObj().minAchievableVelocity(12, m_maxAcc));
+    SmartDashboard.putNumber("Max Achievable Acceleration", m_trapTests.getFFObj().maxAchievableAcceleration(12, m_maxVel));
+    SmartDashboard.putNumber("Min Achievable Acceleration", m_trapTests.getFFObj().minAchievableAcceleration(12, m_maxVel));
   }
 }

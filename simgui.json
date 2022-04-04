@@ -2,12 +2,19 @@
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/LiveWindow/ArmShuffleBoardDisplay": "Subsystem",
       "/LiveWindow/ArmTrapezoidTests": "Subsystem",
       "/LiveWindow/ElevatorShuffleBoardDisplay": "Subsystem",
+      "/LiveWindow/ElevatorTrapezoidTest": "Subsystem",
       "/LiveWindow/ExampleSubsystem": "Subsystem",
       "/LiveWindow/ShuffleBoardDisplay": "Subsystem",
       "/LiveWindow/TrapezoidTests": "Subsystem",
       "/LiveWindow/Ungrouped/Scheduler": "Scheduler"
+    }
+  },
+  "NetworkTables": {
+    "SmartDashboard": {
+      "open": true
     }
   }
 }

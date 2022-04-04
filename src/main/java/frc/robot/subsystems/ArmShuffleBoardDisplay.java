@@ -15,8 +15,8 @@ public class ArmShuffleBoardDisplay extends SubsystemBase {
   private double m_maxVel, m_maxAcc, m_startPos, m_endPos;
   /** Creates a new ShuffleBoardDisplay. */
   public ArmShuffleBoardDisplay() {
-    m_maxVel = 1.0;
-    m_maxAcc = 1.0;
+    m_maxVel = 6.0;
+    m_maxAcc = 12.0;
     m_startPos = 0;
     m_endPos = 130;
     SmartDashboard.putNumber("Max Velocity", m_maxVel);
@@ -43,5 +43,9 @@ public class ArmShuffleBoardDisplay extends SubsystemBase {
     SmartDashboard.putNumber("Current Position", m_trapTests.getCurPosVel().position);
     SmartDashboard.putNumber("Current Velocity", m_trapTests.getCurPosVel().velocity);
     SmartDashboard.putNumber("Current Feed Forward", m_trapTests.getCurFFvalue());
+    SmartDashboard.putNumber("Max Achievable Velovity", m_trapTests.getFFObj().maxAchievableVelocity(12, m_trapTests.getCurPosVel().position, m_maxAcc));
+    SmartDashboard.putNumber("Min Achievable  Velocity", m_trapTests.getFFObj().minAchievableVelocity(12, m_trapTests.getCurPosVel().position, m_maxAcc));
+    SmartDashboard.putNumber("Max Achievable Acceleration", m_trapTests.getFFObj().maxAchievableAcceleration(12, m_trapTests.getCurPosVel().position, m_maxVel));
+    SmartDashboard.putNumber("Min Achievable Acceleration", m_trapTests.getFFObj().minAchievableAcceleration(12, m_trapTests.getCurPosVel().position, m_maxVel));
   }
 }

@@ -38,6 +38,10 @@ public class ArmTrapezoidTests extends TrapezoidProfileSubsystem {
     return m_curFFvalue;
   }
 
+  public ArmFeedforward getFFObj() {
+    return m_armFF;
+  }
+
   @Override
   protected void useState(TrapezoidProfile.State state) {
     // If state did not change, do not apply power
