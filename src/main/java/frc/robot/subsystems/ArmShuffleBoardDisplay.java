@@ -15,8 +15,8 @@ public class ArmShuffleBoardDisplay extends SubsystemBase {
   private double m_maxVel, m_maxAcc, m_startPos, m_endPos;
   /** Creates a new ShuffleBoardDisplay. */
   public ArmShuffleBoardDisplay() {
-    m_maxVel = 6.0;
-    m_maxAcc = 12.0;
+    m_maxVel = 6.0; // rad / sec; max Possible Vel = 14.4 rad/sec
+    m_maxAcc = 12.0; // rad / sec^2; max possible accel = 24 rad/sec^2
     m_startPos = 0;
     m_endPos = 130;
     SmartDashboard.putNumber("Max Velocity", m_maxVel);
